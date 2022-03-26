@@ -1,0 +1,15 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '--tag',
+        'gcr.io/arq-customer-next/customer-form',
+        '--build-arg',
+        'NEXT_PUBLIC_API_URL=${_NEXT_PUBLIC_API_URL}',
+        '.',
+      ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/arq-customer-next/customer-form']
+images:
+  - 'gcr.io/arq-customer-next/customer-form'
